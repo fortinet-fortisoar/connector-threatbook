@@ -1,0 +1,1212 @@
+{
+  "name": "threatbook",
+  "label": "ThreatBook",
+  "description": "ThreatBook is China’s first security threat intelligence company, dedicated to providing real-time, accurate and actionable threat intelligence to block, detect and prevent attacks.",
+  "publisher": "Community",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "version": "1.0.0",
+  "category": "Threat Intelligence",
+  "help_online": "",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "name": "server_url",
+        "type": "text",
+        "description": "Server URL of the ThreatBook API server to which you will connect and perform the automated operations. Please refer this doc https://automation.trendmicro.com/xdr/Guides/Regional-Domains",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "value": "https://api.threatbook.cn"
+      },
+      {
+        "title": "API Key",
+        "name": "api_key",
+        "type": "password",
+        "description": "API Key to access the of the ThreatBook endpoint to which you will connect and perform the automated operations.",
+        "required": true,
+        "editable": true,
+        "visible": true
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "type": "checkbox",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "submit_ip",
+      "title": "Submit IP for Analysis",
+      "category": "investigation",
+      "annotation": "submit_ip",
+      "description": "Analyze business logs and external IPs obtained from security devices such as firewalls and WAFs. Obtain IP-related geographic location, ASN information, and comprehensively determine threat types such as: Remote Control (C2), Zombie, Compromised, Scanner, Phishing, etc., related attack gangs or security incidents Tags, raw intelligence, relevant sample information, etc.",
+      "parameters": [
+        {
+          "title": "IP Address",
+          "name": "resource",
+          "type": "text",
+          "description": "Provide the IP address to analyze.",
+          "tooltip": "Provide the IP address to analyze.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Exclude",
+          "name": "exclude",
+          "type": "multiselect",
+          "description": "Provide CSV list of parameters can be excluded according to the actual usage scenario, and the result information will be returned.",
+          "tooltip": "Provide CSV list of parameters can be excluded according to the actual usage scenario, and the result information will be returned.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "asn",
+            "ports",
+            "cas",
+            "rdns_list",
+            "intelligences",
+            "judgments",
+            "tags_classes",
+            "samples",
+            "update_time",
+            "sum_cur_domains",
+            "scene"
+          ]
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "select",
+          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "enabled": true,
+      "api_output_schema": "get_ip_analysis_schema",
+      "output_schema": {
+        "data": {
+          "": {
+            "samples": [],
+            "tags_classes": [],
+            "judgments": [],
+            "intelligences": {
+              "threatbook_lab": [
+                {
+                  "source": "",
+                  "confidence": "",
+                  "expired": "",
+                  "intel_tags": [],
+                  "find_time": "",
+                  "intel_types": [],
+                  "update_time": ""
+                },
+                {
+                  "source": "",
+                  "confidence": "",
+                  "expired": "",
+                  "intel_tags": [],
+                  "find_time": "",
+                  "intel_types": [],
+                  "update_time": ""
+                }
+              ],
+              "x_reward": [],
+              "open_source": []
+            },
+            "scene": "",
+            "basic": {
+              "carrier": "",
+              "location": {
+                "country": "",
+                "province": "",
+                "city": "",
+                "lng": "",
+                "lat": "",
+                "country_code": ""
+              }
+            },
+            "asn": {
+              "rank": "",
+              "info": "",
+              "number": ""
+            },
+            "ports": [],
+            "cas": [],
+            "update_time": "",
+            "rdns_list": [],
+            "sum_cur_domains": ""
+          }
+        },
+        "response_code": "",
+        "verbose_msg": ""
+      }
+    },
+    {
+      "operation": "get_ip_reputation",
+      "title": "Get IP Reputation",
+      "category": "investigation",
+      "annotation": "get_ip_reputation",
+      "description": "Analyze the IP of the inbound scenario, provide the geographical location and ASN information of the IP, and accurately determine whether the IP is malicious, the risk severity level, and the credibility level through the judgment rules; identify the threat.",
+      "parameters": [
+        {
+          "title": "IP Address",
+          "name": "resource",
+          "type": "text",
+          "description": "Provide CSV list of the IP addresses to reputation. Support batch query, up to 100, separated by commas.",
+          "tooltip": "Provide CSV list of the IP addresses to reputation. Support batch query, up to 100, separated by commas.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "select",
+          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "data": {
+          "": {
+            "severity": "",
+            "judgments": [],
+            "tags_classes": [],
+            "basic": {
+              "carrier": "",
+              "location": {
+                "country": "",
+                "province": "",
+                "city": "",
+                "lng": "",
+                "lat": "",
+                "country_code": ""
+              }
+            },
+            "asn": {
+              "rank": "",
+              "info": "",
+              "number": ""
+            },
+            "scene": "",
+            "confidence_level": "",
+            "is_malicious": "",
+            "update_time": ""
+          }
+        },
+        "response_code": "",
+        "verbose_msg": ""
+      }
+    },
+    {
+      "operation": "domain_analysis",
+      "title": "Submit Domain for Analysis",
+      "category": "investigation",
+      "annotation": "domain_analysis",
+      "description": "Analysis can be performed on domain names pulled from internal DNS or some NGFWs. Obtain the IP address corresponding to the domain name, the current Whois, and comprehensively determine the threat.",
+      "parameters": [
+        {
+          "title": "Domain Name",
+          "name": "resource",
+          "type": "text",
+          "description": "Provide a domain name to analysis",
+          "tooltip": "Provide a domain name to analysis",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Exclude",
+          "name": "exclude",
+          "type": "multiselect",
+          "description": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces). cur_ips: The resolution IP address information of the domain name. \ncur_whois: The current whois information of the domain name. \ncas: SSL certificate and other information. intelligences: threat intelligence. \njudgments: The types of threats that are analyzed and comprehensively determined from threat intelligence. tags_classes: related attack groups or security event information tags, etc. \nsamples: relevant samples.\ncategories: Domain name categories.",
+          "tooltip": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces). cur_ips: The resolution IP address information of the domain name. \ncur_whois: The current whois information of the domain name. \ncas: SSL certificate and other information. intelligences: threat intelligence. \njudgments: The types of threats that are analyzed and comprehensively determined from threat intelligence. tags_classes: related attack groups or security event information tags, etc. \nsamples: relevant samples.\ncategories: Domain name categories.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "cur_ips",
+            "cur_whois",
+            "cas",
+            "intelligences",
+            "judgments",
+            "tags_classes",
+            "samples",
+            "categories"
+          ]
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "select",
+          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "enabled": true,
+      "api_output_schema": "get_domain_analysis_schema",
+      "output_schema": {
+        "": {
+          "judgments": [
+          ],
+          "rank": {
+            "alexa_rank": {
+              "global_rank": ""
+            },
+            "umbrella_rank": {
+              "global_rank": ""
+            }
+          },
+          "intelligences": {
+            "threatbook_lab": [
+              {
+                "find_time": "",
+                "expired": "",
+                "confidence": "",
+                "source": "",
+                "intel_types": [
+                ],
+                "intel_tags": [
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  },
+                  {
+                    "tags_type": "",
+                    "tags": []
+                  }
+                ]
+              }
+            ],
+            "x_reward": [
+              {
+                "find_time": "",
+                "expired": "",
+                "confidence": "",
+                "source": "",
+                "intel_types": [
+                ],
+                "intel_tags": [
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  },
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  }
+                ]
+              }
+            ],
+            "open_source": [
+              {
+                "find_time": "",
+                "expired": "",
+                "confidence": "",
+                "source": "",
+                "intel_types": [
+                ],
+                "intel_tags": [
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  },
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "tags_classes": [
+            {
+              "tags_type": "",
+              "tags": [
+              ]
+            },
+            {
+              "tags_type": "",
+              "tags": [
+              ]
+            }
+          ],
+          "samples": [
+            {
+              "sha256": "",
+              "scan_time": "",
+              "malware_type": "",
+              "ratio": "",
+              "malware_family": ""
+            }
+          ],
+          "cur_ips": [
+            {
+              "ip": "",
+              "carrier": "",
+              "location": {
+                "country": "",
+                "country_code": "",
+                "province": "",
+                "lng": "",
+                "city": "",
+                "lat": ""
+              }
+            },
+            {
+              "ip": "",
+              "carrier": "",
+              "location": {
+                "country": "",
+                "country_code": "",
+                "province": "",
+                "lng": "",
+                "city": "",
+                "lat": ""
+              }
+            }
+          ],
+          "cur_whois": {
+            "registrant_phone": "",
+            "name_server": "",
+            "cdate": "",
+            "registrant_address": "",
+            "registrar_name": "",
+            "registrant_name": "",
+            "alexa": "",
+            "registrant_email": "",
+            "registrant_company": "",
+            "udate": "",
+            "edate": ""
+          },
+          "categories": {
+            "first_cats": [],
+            "second_cats": ""
+          },
+          "cas": [
+            {
+              "subject": "",
+              "issuer": "",
+              "fingerprint": "",
+              "purpose": "",
+              "verify": "",
+              "status": "",
+              "revoked": "",
+              "begin": "",
+              "end": "",
+              "status_desc": "",
+              "serial_number": "",
+              "revoked_time": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "loss_detection",
+      "title": "Get Loss Detection Data",
+      "category": "investigation",
+      "annotation": "loss_detection",
+      "description": "Analyze the IP/domain name of external access scenarios such as office network/production network, and accurately determine whether the IP/domain name is malicious, risk severity level, and credibility level through judgment rules; accurately identify remote control (C2) and malware (Malware) , mining pool threats, provide relevant security incidents or gang labels, etc.",
+      "parameters": [
+        {
+          "title": "Resource",
+          "name": "resource",
+          "type": "text",
+          "description": "IP addresses or domain names, support batch query, up to 100, separated by commas.\nIP can be queried with ports to obtain high-confidence judgment results.\nExample of IP with port format in the request: 8.8.8.8:143,0.0.0.0:80",
+          "tooltip": "IP addresses or domain names, support batch query, up to 100, separated by commas.\nIP can be queried with ports to obtain high-confidence judgment results.\nExample of IP with port format in the request: 8.8.8.8:143,0.0.0.0:80",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "select",
+          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "response_code": "",
+        "verbose_msg": "",
+        "data": {
+          "ips": {
+          },
+          "domains": {
+          }
+        }
+      }
+    },
+    {
+      "operation": "submit_file",
+      "title": "Submit File",
+      "category": "investigation",
+      "annotation": "submit_file",
+      "description": "For suspected malicious files such as office terminals, Web/FTP/mail attachments, and suspicious files on terminals/servers, 22 anti-virus scanning engines are used to quickly detect them, and according to different file types, the system automatically selects a runnable sandbox environment for dynamic detection.",
+      "parameters": [
+        {
+          "name": "input",
+          "title": "Type",
+          "type": "select",
+          "options": [
+            "Attachment ID",
+            "File IRI"
+          ],
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Type of file that you want to submit to VirusTotal for analysis. Type can be an Attachment ID or a File IRI.",
+          "value": "File IRI"
+        },
+        {
+          "name": "value",
+          "title": "Reference ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Reference ID that is used to access the attachment metadata from the FortiSOAR™ Attachments module.\nIn the playbook, this defaults to the{{vars.attachment_id}} value or the {{vars.file_iri}} value."
+        },
+        {
+          "title": "Sandbox Type",
+          "name": "sandbox_type",
+          "type": "select",
+          "description": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
+          "tooltip": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "win7_sp1_enx64_office2013",
+            "win7_sp1_enx86_office2013",
+            "win7_sp1_enx86_office2010",
+            "win7_sp1_enx86_office2007",
+            "win7_sp1_enx86_office2003",
+            "ubuntu_1704_x64",
+            "centos_7_x64"
+          ]
+        },
+        {
+          "title": "Run Time",
+          "name": "run_time",
+          "type": "integer",
+          "description": "Sandbox running time, default 60s, controlled within 300s according to demand",
+          "tooltip": "Sandbox running time, default 60s, controlled within 300s according to demand",
+          "required": false,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "verbose_msg": "",
+        "response_code": "",
+        "data": {
+          "sha256": "",
+          "permalink": ""
+        }
+      }
+    },
+    {
+      "operation": "get_file_reputation",
+      "title": "Get File Reputation",
+      "category": "investigation",
+      "annotation": "get_file_reputation",
+      "description": "Obtain detailed static analysis & dynamic analysis reports of files, including file summary information, network behavior, behavior signature, static information, release behavior, process behavior, and anti-virus scan engine detection results.",
+      "parameters": [
+        {
+          "title": "Hash Type",
+          "name": "hash_type",
+          "type": "select",
+          "description": "Select type of file hash, used to get the analysis report.",
+          "tooltip": "Select type of file hash, used to get the analysis report. ",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "SHA256",
+            "SHA1",
+            "MD5"
+          ],
+          "value": "SHA256"
+        },
+        {
+          "title": "Hash Value",
+          "name": "hash_value",
+          "type": "text",
+          "description": "Provide the hash value of the selected hash type of the file, used to get the analysis report.",
+          "tooltip": "Provide the hash value of the selected hash type of the file, used to get the analysis report.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Sandbox Type",
+          "name": "sandbox_type",
+          "type": "select",
+          "description": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
+          "tooltip": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "win7_sp1_enx64_office2013",
+            "win7_sp1_enx86_office2013",
+            "win7_sp1_enx86_office2010",
+            "win7_sp1_enx86_office2007",
+            "win7_sp1_enx86_office2003",
+            "ubuntu_1704_x64",
+            "centos_7_x64"
+          ]
+        },
+        {
+          "title": "Query Fields",
+          "name": "query_fields",
+          "type": "select",
+          "description": "File analysis report, all are obtained by default, optional data include:",
+          "tooltip": "File analysis report, all are obtained by default, optional data include:",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "Summary",
+            "Network",
+            "Signature",
+            "Static",
+            "Dropped",
+            "pstree",
+            "Multiengines"
+          ]
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "response_code": "",
+        "data": {
+          "summary": {
+            "threat_level": "",
+            "is_whitelist": "",
+            "submit_time": "",
+            "file_name": "",
+            "file_type": "",
+            "sample_sha256": "",
+            "tag": {
+              "s": [],
+              "x": []
+            },
+            "threat_score": "",
+            "sandbox_type": "",
+            "sandbox_type_list": [],
+            "multi_engines": ""
+          },
+          "multiengines": {
+            "result": {
+              "Kaspersky": "",
+              "Microsoft": ""
+            },
+            "scan_time": ""
+          },
+          "static": {
+            "details": {
+              "pe_version_info": [],
+              "pe_sections": [],
+              "pe_signatures": {},
+              "pe_imports": [],
+              "pe_resources": [],
+              "tag": [],
+              "pe_detect": {},
+              "pe_basic": {},
+              "pe_exports": []
+            },
+            "basic": {
+              "sha1": "",
+              "sha256": "",
+              "file_type": "",
+              "file_name": "",
+              "ssdeep": "",
+              "file_size": "",
+              "md5": ""
+            }
+          },
+          "signature": [
+            {
+              "severity": "",
+              "references": [],
+              "sig_class": "",
+              "name": "",
+              "description": "",
+              "markcount": "",
+              "marks": [],
+              "families": [],
+              "attck_id": "",
+              "attck_info": {}
+            }
+          ],
+          "dropped": [
+            {
+              "sha1": "",
+              "urls": [],
+              "sha256": "",
+              "size": "",
+              "filepath": "",
+              "name": "",
+              "crc32": "",
+              "ssdeep": "",
+              "type": "",
+              "yara": [],
+              "md5": ""
+            }
+          ],
+          "pstree": {
+            "children": [
+              {
+                "track": "",
+                "pid": "",
+                "process_name": "",
+                "command_line": "",
+                "first_seen": "",
+                "ppid": "",
+                "children": []
+              }
+            ],
+            "process_name": {
+              "en": "",
+              "cn": ""
+            }
+          },
+          "network": {
+            "fingerprint": [],
+            "tls": [],
+            "udp": [],
+            "dns_servers": [],
+            "http": [],
+            "irc": [],
+            "smtp": [],
+            "tcp": [],
+            "smtp_ex": [],
+            "mitm": [],
+            "hosts": [],
+            "dns": [],
+            "http_ex": [],
+            "domains": [],
+            "dead_hosts": [],
+            "icmp": [],
+            "https_ex": []
+          }
+        },
+        "verbose_msg": ""
+      }
+    },
+    {
+      "operation": "file_detection_report",
+      "title": "Get File Detection Report",
+      "category": "investigation",
+      "annotation": "file_detection_report",
+      "description": "Get the results of files that have been detected by 22 anti-virus scanning engines.",
+      "parameters": [
+        {
+          "title": "Hash Type",
+          "name": "hash_type",
+          "type": "select",
+          "description": "Select type of file hash, used to get the analysis report.",
+          "tooltip": "Select type of file hash, used to get the analysis report. ",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "SHA256",
+            "SHA1",
+            "MD5"
+          ],
+          "value": "SHA256"
+        },
+        {
+          "title": "Hash Value",
+          "name": "hash_value",
+          "type": "text",
+          "description": "Provide the hash value of the selected hash type of the file, used to get the analysis report.",
+          "tooltip": "Provide the hash value of the selected hash type of the file, used to get the analysis report.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "response_code": "",
+        "data": {
+          "multiengines": {
+            "threat_level": "",
+            "total": "",
+            "scans": {
+              "vbwebshell": "",
+              "Avast": "",
+              "Rising": "",
+              "K7": "",
+              "Kaspersky": "",
+              "NANO": "",
+              "Baidu-China": "",
+              "Microsoft": "",
+              "ClamAV": "",
+              "IKARUS": "",
+              "Huorong": "",
+              "Avira": "",
+              "Sophos": "",
+              "Panda": "",
+              "Antiy": "",
+              "AVG": "",
+              "Baidu": "",
+              "DrWeb": "",
+              "GDATA": "",
+              "Qihu360": "",
+              "ESET": "",
+              "JiangMin": ""
+            },
+            "is_white": "",
+            "total2": "",
+            "positives": "",
+            "scan_date": "",
+            "malware_type": "",
+            "malware_family": ""
+          }
+        },
+        "verbose_msg": ""
+      }
+    },
+    {
+      "operation": "scan_url",
+      "title": "Submit URL for Scanning",
+      "category": "investigation",
+      "annotation": "scan_url",
+      "description": "Detect any URL through 11 URL scanning engines and URL/domain name blacklist services, analyze the files downloaded by the URL, and generate a URL scanning analysis report.",
+      "parameters": [
+        {
+          "title": "URL",
+          "name": "url",
+          "type": "text",
+          "description": "Provide the URL for analysis.",
+          "tooltip": "Provide the URL for analysis.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "response_code": "",
+        "verbose_msg": "",
+        "data": {
+          "url": "",
+          "time": "",
+          "permalink": ""
+        }
+      }
+    },
+    {
+      "operation": "get_url_reputations",
+      "title": "Get URL Reputations",
+      "category": "investigation",
+      "annotation": "get_url_reputations",
+      "description": "Get URL scan engine detection results, and analysis results of downloaded files.",
+      "parameters": [
+        {
+          "title": "URL",
+          "name": "url",
+          "type": "text",
+          "description": "Provide scanned URL get url scan engine detection result.",
+          "tooltip": "Provide scanned URL get url scan engine detection result.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "response_code": "",
+        "data": {
+          "multiengines": {
+            "threatbook": "",
+            "Google Safebrowsing": ""
+          },
+          "threat_level": "",
+          "sandbox": {
+            "threat_level": "",
+            "submit_time": "",
+            "file_name": "",
+            "file_type": "",
+            "sample_sha256": "",
+            "tag": [],
+            "sb_status": "",
+            "sandbox_type": "",
+            "sandbox_type_list": []
+          },
+          "details": {
+            "headers": {
+              "Accept-Ranges": "",
+              "Strict-Transport-Security": "",
+              "Server": "",
+              "ETag": "",
+              "Connection": "",
+              "Last-Modified": "",
+              "Content-Length": "",
+              "Date": "",
+              "Content-Type": ""
+            },
+            "lastSeen": "",
+            "ip": "",
+            "historyScans": [
+              {
+                "fileName": "",
+                "sha256": "",
+                "multiEngines": "",
+                "fileType": ""
+              }
+            ],
+            "finalUrl": "",
+            "url": "",
+            "sha256s": [
+            ],
+            "status": "",
+            "httpStatusCode": ""
+          }
+        },
+        "verbose_msg": ""
+      }
+    },
+    {
+      "operation": "run_ip_advance_query",
+      "title": "Run IP Advance Query",
+      "category": "investigation",
+      "annotation": "run_ip_advance_query",
+      "description": "IP advanced query, obtain IP current domain name, historical domain name information.",
+      "parameters": [
+        {
+          "title": "IP Address",
+          "name": "resource",
+          "type": "text",
+          "description": "Provide IP address to obtain domain related information",
+          "tooltip": "Provide IP address to obtain domain related information",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Exclude",
+          "name": "exclude",
+          "type": "multiselect",
+          "description": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces).",
+          "tooltip": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces).",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "asn",
+            "cur_domains",
+            "history_domains"
+          ]
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "select",
+          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "data": {
+          "ip": "",
+          "basic": {},
+          "asn": {
+            "rank": "",
+            "info": "",
+            "number": ""
+          },
+          "cur_domains": [],
+          "history_domains": {
+            "2017-02-22": [
+            ],
+            "2017-01-29": [
+            ],
+            "2016-12-21": [
+            ],
+            "2016-09-11": [
+            ],
+            "2015-12-17": [
+            ]
+          }
+        },
+        "response_code": "",
+        "verbose_msg": ""
+      }
+    },
+    {
+      "operation": "run_domain_advance_query",
+      "title": "Run Domain Advance Query",
+      "category": "investigation",
+      "annotation": "run_domain_advance_query",
+      "description": "Advanced domain name query, obtain the historical Whois information of the domain name, and the historical resolution IP information of the domain name.",
+      "parameters": [
+        {
+          "title": "Domain Name",
+          "name": "resource",
+          "type": "text",
+          "description": "Provide domain name to obtain domain related information",
+          "tooltip": "Provide domain name to obtain domain related information",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Exclude",
+          "name": "exclude",
+          "type": "select",
+          "description": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces).",
+          "tooltip": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces).",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "history_ips",
+            "history_whoises"
+          ]
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "select",
+          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "data": {
+          "domain": "",
+          "history_whoises": [
+            {
+              "date": "",
+              "whois": {
+                "cdate": "",
+                "edate": "",
+                "udate": "",
+                "alexa": "",
+                "registrar_name": "",
+                "name_server": "",
+                "registrant_name": "",
+                "registrant_email": "",
+                "registrant_company": "",
+                "registrant_address": "",
+                "registrant_phone": ""
+              }
+            }
+          ],
+          "history_ips": [
+            {
+              "date": "",
+              "ips": [
+                {
+                  "ip": ""
+                }
+              ]
+            }
+          ]
+        },
+        "response_code": "",
+        "verbose_msg": ""
+      }
+    },
+    {
+      "operation": "run_sub_domain_query",
+      "title": "Run Sub Domain Query",
+      "category": "investigation",
+      "annotation": "run_sub_domain_query",
+      "description": "Advanced domain name query to obtain domain name subdomain information",
+      "parameters": [
+        {
+          "title": "Domain Name",
+          "name": "resource",
+          "type": "text",
+          "description": "Provide domain name to obtain sub domain information",
+          "tooltip": "Provide domain name to obtain sub domain information",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "select",
+          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "data": {
+          "domain": "",
+          "sub_domains": {
+            "total": "",
+            "data": [
+            ]
+          }
+        },
+        "response_code": "",
+        "verbose_msg": ""
+      }
+    },
+    {
+      "operation": "get_domain_name_context",
+      "title": "Get Domain Name Context",
+      "category": "investigation",
+      "annotation": "get_domain_name_context",
+      "description": "For malicious domain names that have been hit in the breach detection, the context information is queried to obtain evidence collection and disposal advice.",
+      "parameters": [
+        {
+          "title": "Domain Name",
+          "name": "resource",
+          "type": "text",
+          "description": "Provide domain name to obtain the context information",
+          "tooltip": "Provide domain name to obtain the context information",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Language",
+          "name": "lang",
+          "type": "select",
+          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "options": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "enabled": true,
+      "api_output_schema": "get_domain_name_context_schema",
+      "output_schema": {
+        "data": {
+          "": {
+            "context": [
+              {
+                "sample": "",
+                "source_urls": []
+              },
+              {
+                "sample": "",
+                "source_urls": [
+                  {
+                    "ip": "",
+                    "url": ""
+                  }
+                ]
+              }
+            ],
+            "forensics": [
+              {
+                "sample": {
+                  "sha256": "",
+                  "tag": {
+                    "s": [
+                    ],
+                    "x": [
+                    ]
+                  },
+                  "domains": [
+                    {
+                      "domain": "",
+                      "ip": ""
+                    }
+                  ],
+                  "file_type": "",
+                  "malware_family": "",
+                  "malware_type": "",
+                  "threat_level": ""
+                },
+                "suggestion": {
+
+                }
+              }
+            ]
+          }
+        },
+        "response_code": "",
+        "verbose_msg": ""
+      }
+    }
+  ]
+}

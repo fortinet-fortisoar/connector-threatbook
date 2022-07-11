@@ -1,0 +1,1312 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - ThreatBook - 1.0.0",
+      "description": "Sample playbooks for \"ThreatBook\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "/api/3/images/dd87a7ab-4e17-48ce-8661-b45df9e9f3be",
+      "uuid": "dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+      "id": 455,
+      "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "createDate": 1657012694.514094,
+      "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "modifyDate": 1657012694.514094,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Threatbook",
+        "threatbook"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Loss Detection",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Analyze the IP/domain name of external access scenarios such as office network/production network, and accurately determine whether the IP/domain name is malicious, risk severity level, and credibility level through judgment rules; accurately identify remote control (C2) and malware (Malware) , mining pool threats, provide relevant security incidents or gang labels, etc.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657014480,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/abffd7b0-8359-47b5-bfee-34a236e359bd",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Loss Detection",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "lang": "en",
+                  "resource": "8.8.8.8:143,0.0.0.0:80"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "loss_detection",
+                "operationTitle": "Loss Detection",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "08f43d7b-cf98-4339-bc8e-b56fb55f8f9d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "eb6b5e31-eb42-4364-9257-53da289b3248",
+                "title": "ThreatBook: Loss Detection",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "abffd7b0-8359-47b5-bfee-34a236e359bd"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Loss Detection",
+              "targetStep": "/api/3/workflow_steps/08f43d7b-cf98-4339-bc8e-b56fb55f8f9d",
+              "sourceStep": "/api/3/workflow_steps/abffd7b0-8359-47b5-bfee-34a236e359bd",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "bbd92829-9eb3-43d1-8647-09326f6dd6ca"
+            }
+          ],
+          "priority": null,
+          "uuid": "02cdb78a-8678-420f-a9ed-d159f5847a95",
+          "id": 4127,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.517986,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657014474.539817,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Submit URL for Scanning",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Detect any URL through 11 URL scanning engines and URL/domain name blacklist services, analyze the files downloaded by the URL, and generate a URL scanning analysis report.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657015016,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/4151cac7-d15b-49d3-9f36-16974edc8294",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Submit URL for Scanning",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "url": "www.malware.com"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "scan_url",
+                "operationTitle": "Submit URL for Scanning",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "04f788bf-751d-49f3-b8e0-cbae869dbca1"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "f543cf7e-4471-424c-97b1-13913a8b8fce",
+                "title": "ThreatBook: Submit URL for Scanning",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "4151cac7-d15b-49d3-9f36-16974edc8294"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Submit URL for Scanning",
+              "targetStep": "/api/3/workflow_steps/04f788bf-751d-49f3-b8e0-cbae869dbca1",
+              "sourceStep": "/api/3/workflow_steps/4151cac7-d15b-49d3-9f36-16974edc8294",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "52f63b79-8703-4cfe-8159-a73dbbf25277"
+            }
+          ],
+          "priority": null,
+          "uuid": "0435a279-d9dd-464a-b746-c07a8cca5430",
+          "id": 4131,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.520089,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657015016.86669,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Domain Name Context",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "For malicious domain names that have been hit in the breach detection, the context information is queried to obtain evidence collection and disposal advice.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657013210,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d7bc1416-246e-45ce-9542-c0f759b80e80",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Domain Name Context",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "lang": "en",
+                  "resource": "www.example.com"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "get_domain_name_context",
+                "operationTitle": "Get Domain Name Context",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "d2844889-ff3a-43b5-a7f9-f26d7dd956dc"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "8ce8f750-cebc-46a4-a948-cbc753caaa0c",
+                "title": "ThreatBook: Get Domain Name Context",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "d7bc1416-246e-45ce-9542-c0f759b80e80"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Domain Name Context",
+              "targetStep": "/api/3/workflow_steps/d2844889-ff3a-43b5-a7f9-f26d7dd956dc",
+              "sourceStep": "/api/3/workflow_steps/d7bc1416-246e-45ce-9542-c0f759b80e80",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "457e8b6b-d36c-4606-bc4f-7deef715a7ae"
+            }
+          ],
+          "priority": null,
+          "uuid": "339ff515-633a-4189-a698-bc9d24827b22",
+          "id": 4136,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.522508,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657013208.109364,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Submit File",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "For suspected malicious files such as office terminals, Web/FTP/mail attachments, and suspicious files on terminals/servers, 22 anti-virus scanning engines are used to quickly detect them, and according to different file types, the system automatically selects a runnable sandbox environment for dynamic detection.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657019530,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/db69a16a-4ff1-4031-8651-6ea667c1b517",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Submit File",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "input": "File IRI",
+                  "value": "/api/3/files/0252cae7-4b2e-402b-832e-66b6c1435348",
+                  "run_time": 30,
+                  "sandbox_type": "win7_sp1_enx64_office2013"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "submit_file",
+                "operationTitle": "Submit File",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "180",
+              "left": "200",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "3c595489-5f72-4202-a4a4-14d758ff6244"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "45801c89-4d8e-483f-a409-372a6ac4df28",
+                "title": "ThreatBook: Submit File",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "db69a16a-4ff1-4031-8651-6ea667c1b517"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Submit File",
+              "targetStep": "/api/3/workflow_steps/3c595489-5f72-4202-a4a4-14d758ff6244",
+              "sourceStep": "/api/3/workflow_steps/db69a16a-4ff1-4031-8651-6ea667c1b517",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "a130d162-003f-44e3-ac0f-06774e30aab3"
+            }
+          ],
+          "priority": null,
+          "uuid": "36758493-a3e6-4f32-bc83-bfe486020853",
+          "id": 4128,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.518626,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657019525.845782,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Submit IP for Analysis",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Analyze business logs and external IPs obtained from security devices such as firewalls and WAFs. Obtain IP-related geographic location, ASN information, and comprehensively determine threat types such as: Remote Control (C2), Zombie, Compromised, Scanner, Phishing, etc., related attack gangs or security incidents Tags, raw intelligence, relevant sample information, etc.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657014955,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f8bdfe9b-659f-42be-b464-7b70130646db",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Submit IP for Analysis",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "lang": "en",
+                  "exclude": [
+                    "asn",
+                    "ports",
+                    "cas"
+                  ],
+                  "resource": "1.1.1.1"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "submit_ip",
+                "operationTitle": "Submit IP for Analysis",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "2c500111-1ae2-4e8e-85a7-08711cb49f03"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "f674ba03-1496-490c-b9a3-3f992364941b",
+                "title": "ThreatBook: Submit IP for Analysis",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "f8bdfe9b-659f-42be-b464-7b70130646db"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Submit IP for Analysis",
+              "targetStep": "/api/3/workflow_steps/2c500111-1ae2-4e8e-85a7-08711cb49f03",
+              "sourceStep": "/api/3/workflow_steps/f8bdfe9b-659f-42be-b464-7b70130646db",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "ade68ddd-0f67-424c-a7c3-dfd0a43ed7ad"
+            }
+          ],
+          "priority": null,
+          "uuid": "3d7f8b95-87af-4c73-8b87-f2e041cb2364",
+          "id": 4124,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.515674,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657014949.97632,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get File Reputation",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Obtain detailed static analysis & dynamic analysis reports of files, including file summary information, network behavior, behavior signature, static information, release behavior, process behavior, and anti-virus scan engine detection results.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657013406,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/617abbf7-874f-4447-9515-163335c4e94d",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get File Reputation",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "hash_type": "SHA256",
+                  "hash_value": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+                  "query_fields": "Summary",
+                  "sandbox_type": "win7_sp1_enx64_office2013"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "get_file_reputation",
+                "operationTitle": "Get File Reputation",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "061650ba-b35a-428e-a36e-c554cff8ab8c"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "01f770c8-48c2-492c-9282-03faf48a1374",
+                "title": "ThreatBook: Get File Reputation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "617abbf7-874f-4447-9515-163335c4e94d"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get File Reputation",
+              "targetStep": "/api/3/workflow_steps/061650ba-b35a-428e-a36e-c554cff8ab8c",
+              "sourceStep": "/api/3/workflow_steps/617abbf7-874f-4447-9515-163335c4e94d",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "383034ea-6671-4270-aeaf-038e3746e7bf"
+            }
+          ],
+          "priority": null,
+          "uuid": "45de47d4-bd38-43c5-aea2-543592fb9544",
+          "id": 4129,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.519113,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657013401.263509,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get URL Reputations",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Get URL scan engine detection results, and analysis results of downloaded files.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657014375,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/4d09dab4-3c1f-4dd3-af1f-263abe310f4b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "f0f1cff1-58c3-4563-9d1b-5e1747538341",
+                "title": "ThreatBook: Get URL Reputations",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "4d09dab4-3c1f-4dd3-af1f-263abe310f4b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get URL Reputations",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "url": "www.domain.com"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "get_url_reputations",
+                "operationTitle": "Get URL Reputations",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "fbda5abe-4b92-48a2-a238-24f6098446b9"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get URL Reputations",
+              "targetStep": "/api/3/workflow_steps/fbda5abe-4b92-48a2-a238-24f6098446b9",
+              "sourceStep": "/api/3/workflow_steps/4d09dab4-3c1f-4dd3-af1f-263abe310f4b",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "6a3abe31-ece1-41d8-940b-d1271bc7e656"
+            }
+          ],
+          "priority": null,
+          "uuid": "66e368b6-29f1-4d0d-be27-23f18eab6873",
+          "id": 4132,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.520635,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657014369.505954,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Sub Domain Query",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Advanced domain name query to obtain domain name subdomain information",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657014742,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/abdf0fa1-eb4b-43c0-90bc-25ee7f051c35",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Sub Domain Query",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "lang": "en",
+                  "resource": "www.sub.domain.com"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "run_sub_domain_query",
+                "operationTitle": "Run Sub Domain Query",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "9930a23e-766a-4cef-b771-d893cfd57a93"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "d3a0d672-064b-440b-b121-2687a44599cc",
+                "title": "ThreatBook: Sub Domain Query",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "abdf0fa1-eb4b-43c0-90bc-25ee7f051c35"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Sub Domain Query",
+              "targetStep": "/api/3/workflow_steps/9930a23e-766a-4cef-b771-d893cfd57a93",
+              "sourceStep": "/api/3/workflow_steps/abdf0fa1-eb4b-43c0-90bc-25ee7f051c35",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f1fa7230-74f2-4dcb-9ab3-3151b0c2b75c"
+            }
+          ],
+          "priority": null,
+          "uuid": "9a8dd984-075a-4f4b-8f0d-2483dba76690",
+          "id": 4135,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.522101,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657014736.262339,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get File Detection Report",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Get the results of files that have been detected by 22 anti-virus scanning engines.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657013085,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/4050f83d-740f-4d54-b9dc-d9d4339d1ca2",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "99388bba-beb4-43c7-b434-cd79552a2f00",
+                "title": "ThreatBook: Get File Detection Report",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "4050f83d-740f-4d54-b9dc-d9d4339d1ca2"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get File Detection Report",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "hash_type": "SHA256",
+                  "hash_value": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "file_detection_report",
+                "operationTitle": "Get File Detection Report",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "d4f65206-cea7-46ef-9b13-dddca40f1667"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get File Detection Report",
+              "targetStep": "/api/3/workflow_steps/d4f65206-cea7-46ef-9b13-dddca40f1667",
+              "sourceStep": "/api/3/workflow_steps/4050f83d-740f-4d54-b9dc-d9d4339d1ca2",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8c567044-96d7-4d66-bdd3-63a2a5fb486c"
+            }
+          ],
+          "priority": null,
+          "uuid": "a4904f9c-7053-4f25-be98-fd2b1616490d",
+          "id": 4130,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.519621,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657013079.77571,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Run Domain Advance Query",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Advanced domain name query, obtain the historical Whois information of the domain name, and the historical resolution IP information of the domain name.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657014567,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/3f588f38-f3c8-4681-ba67-6da9cbe1eff4",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Run Domain Advance Query",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "lang": "en",
+                  "exclude": "history_ips",
+                  "resource": "www.example.com"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "run_domain_advance_query",
+                "operationTitle": "Run Domain Advance Query",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "0ef0832b-5b90-4a63-84d2-a0b3edb9f2f9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "085a1815-9f62-413a-9dfc-d77770c8a274",
+                "title": "ThreatBook: Run Domain Advance Query",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "3f588f38-f3c8-4681-ba67-6da9cbe1eff4"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Run Domain Advance Query",
+              "targetStep": "/api/3/workflow_steps/0ef0832b-5b90-4a63-84d2-a0b3edb9f2f9",
+              "sourceStep": "/api/3/workflow_steps/3f588f38-f3c8-4681-ba67-6da9cbe1eff4",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f682d6dc-7dea-4439-ad0a-9f7f3756190c"
+            }
+          ],
+          "priority": null,
+          "uuid": "aaf0b942-48a0-434f-be10-6d81e078c391",
+          "id": 4134,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.521696,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657014562.154574,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Run IP Advance Query",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "IP advanced query, obtain IP current domain name, historical domain name information.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657014622,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d1b6f0fb-4e7a-4b96-81d7-1d360e314030",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "a8b54f0f-a118-41d0-acbb-ff8005957d66",
+                "title": "ThreatBook: Run IP Advance Query",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "d1b6f0fb-4e7a-4b96-81d7-1d360e314030"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Run IP Advance Query",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "lang": "en",
+                  "exclude": [
+                    "asn",
+                    "cur_domains",
+                    "history_domains"
+                  ],
+                  "resource": "1.1.1.1"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "run_ip_advance_query",
+                "operationTitle": "Run IP Advance Query",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "ed3ee833-ae2a-4255-a722-33d3db01be73"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Run IP Advance Query",
+              "targetStep": "/api/3/workflow_steps/ed3ee833-ae2a-4255-a722-33d3db01be73",
+              "sourceStep": "/api/3/workflow_steps/d1b6f0fb-4e7a-4b96-81d7-1d360e314030",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "ccab59c2-4fad-461d-8d3e-cad738894da1"
+            }
+          ],
+          "priority": null,
+          "uuid": "bc41be8e-7f77-46c3-a16a-cd44a917d6cb",
+          "id": 4133,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.521138,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657014616.68312,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get IP Reputation",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Analyze the IP of the inbound scenario, provide the geographical location and ASN information of the IP, and accurately determine whether the IP is malicious, the risk severity level, and the credibility level through the judgment rules; identify the threat.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657014292,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/6f8a795a-4c0a-471b-b4af-d86a23471efe",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "b3df44e9-670f-4804-9d59-02c6959ea43d",
+                "title": "ThreatBook: Get IP Reputation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "6f8a795a-4c0a-471b-b4af-d86a23471efe"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get IP Reputation",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "lang": "en",
+                  "resource": "1.1.1.1,2.2.2.2"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "get_ip_reputation",
+                "operationTitle": "Get IP Reputation",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "853dd58a-375c-4de2-be62-a6d1efaa84eb"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get IP Reputation",
+              "targetStep": "/api/3/workflow_steps/853dd58a-375c-4de2-be62-a6d1efaa84eb",
+              "sourceStep": "/api/3/workflow_steps/6f8a795a-4c0a-471b-b4af-d86a23471efe",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "6ed1caba-8f77-40b7-907f-02b87fb37037"
+            }
+          ],
+          "priority": null,
+          "uuid": "c904c2ef-57ee-4782-a61f-7328b49dac9f",
+          "id": 4125,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.516802,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657014287.14716,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Submit Domain for Analysis",
+          "aliasName": null,
+          "tag": "#ThreatBook",
+          "description": "Analysis can be performed on domain names pulled from internal DNS or some NGFWs. Obtain the IP address corresponding to the domain name, the current Whois, and comprehensively determine the threat.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657014812,
+          "collection": "/api/3/workflow_collections/dbeb8fb0-9a24-479b-b248-23a880d7a7e8",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/224726df-5fc8-4d94-86ba-bbb4a3e782e4",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "5be1d3a0-6b6b-4247-a025-5f88707ce835",
+                "title": "ThreatBook: Submit Domain for Analysis",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "224726df-5fc8-4d94-86ba-bbb4a3e782e4"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Submit Domain for Analysis",
+              "description": null,
+              "arguments": {
+                "name": "ThreatBook",
+                "config": "70aa395e-e36c-4332-b002-a114a630ae75",
+                "params": {
+                  "lang": "en",
+                  "exclude": [
+                    "cur_ips",
+                    "cur_whois",
+                    "cas",
+                    "intelligences",
+                    "judgments",
+                    "categories"
+                  ],
+                  "resource": "www.testdomain.com"
+                },
+                "version": "1.0.0",
+                "connector": "threatbook",
+                "operation": "domain_analysis",
+                "operationTitle": "Submit Domain for Analysis",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "89497f46-229b-44e2-8128-1dad69f8456b"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Submit Domain for Analysis",
+              "targetStep": "/api/3/workflow_steps/89497f46-229b-44e2-8128-1dad69f8456b",
+              "sourceStep": "/api/3/workflow_steps/224726df-5fc8-4d94-86ba-bbb4a3e782e4",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "4eecfba8-8221-43e3-b6ef-6eab38c86cd7"
+            }
+          ],
+          "priority": null,
+          "uuid": "d4dc7ccc-6312-4a80-b7f3-86d73219303c",
+          "id": 4126,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1657012694.517404,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1657014806.621398,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Threatbook",
+            "threatbook"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Threatbook",
+    "threatbook"
+  ]
+}
