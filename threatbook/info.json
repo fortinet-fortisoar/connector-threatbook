@@ -85,7 +85,7 @@
           ]
         },
         {
-          "title": "language",
+          "title": "Language",
           "name": "lang",
           "type": "select",
           "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
@@ -100,13 +100,13 @@
         }
       ],
       "enabled": true,
+      "api_output_schema": "get_ip_analysis_schema",
       "output_schema": {
         "data": {
           "": {
             "samples": [],
             "tags_classes": [],
-            "judgments": [
-            ],
+            "judgments": [],
             "intelligences": {
               "threatbook_lab": [
                 {
@@ -115,8 +115,7 @@
                   "expired": "",
                   "intel_tags": [],
                   "find_time": "",
-                  "intel_types": [
-                  ],
+                  "intel_types": [],
                   "update_time": ""
                 },
                 {
@@ -125,8 +124,7 @@
                   "expired": "",
                   "intel_tags": [],
                   "find_time": "",
-                  "intel_types": [
-                  ],
+                  "intel_types": [],
                   "update_time": ""
                 }
               ],
@@ -179,7 +177,7 @@
           "visible": true
         },
         {
-          "title": "language",
+          "title": "Language",
           "name": "lang",
           "type": "select",
           "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
@@ -198,8 +196,7 @@
         "data": {
           "": {
             "severity": "",
-            "judgments": [
-            ],
+            "judgments": [],
             "tags_classes": [],
             "basic": {
               "carrier": "",
@@ -265,7 +262,7 @@
           ]
         },
         {
-          "title": "language",
+          "title": "Language",
           "name": "lang",
           "type": "select",
           "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
@@ -280,70 +277,172 @@
         }
       ],
       "enabled": true,
+      "api_output_schema": "get_domain_analysis_schema",
       "output_schema": {
-        "response_code": "",
-        "verbose_msg": "",
-        "data": {
-          "ips": {
-            "": {
-              "confidence_level": "",
-              "is_malicious": "",
-              "severity": "",
-              "judgments": [
-              ],
-              "tags_classes": [
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                },
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                }
-              ]
+        "": {
+          "judgments": [
+          ],
+          "rank": {
+            "alexa_rank": {
+              "global_rank": ""
+            },
+            "umbrella_rank": {
+              "global_rank": ""
             }
           },
-          "domains": {
-            "": {
-              "confidence": "",
-              "is_malicious": "",
-              "severity": "",
-              "judgments": [
-              ],
-              "categories": {
-                "first_cats": [],
-                "second_cats": ""
-              },
-              "rank": {
-                "alexa_rank": {
-                  "global_rank": ""
-                },
-                "umbrella_rank": {
-                  "global_rank": ""
-                }
-              },
-              "tags_classes": [
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                },
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                }
+          "intelligences": {
+            "threatbook_lab": [
+              {
+                "find_time": "",
+                "expired": "",
+                "confidence": "",
+                "source": "",
+                "intel_types": [
+                ],
+                "intel_tags": [
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  },
+                  {
+                    "tags_type": "",
+                    "tags": []
+                  }
+                ]
+              }
+            ],
+            "x_reward": [
+              {
+                "find_time": "",
+                "expired": "",
+                "confidence": "",
+                "source": "",
+                "intel_types": [
+                ],
+                "intel_tags": [
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  },
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  }
+                ]
+              }
+            ],
+            "open_source": [
+              {
+                "find_time": "",
+                "expired": "",
+                "confidence": "",
+                "source": "",
+                "intel_types": [
+                ],
+                "intel_tags": [
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  },
+                  {
+                    "tags_type": "",
+                    "tags": [
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "tags_classes": [
+            {
+              "tags_type": "",
+              "tags": [
+              ]
+            },
+            {
+              "tags_type": "",
+              "tags": [
               ]
             }
-          }
+          ],
+          "samples": [
+            {
+              "sha256": "",
+              "scan_time": "",
+              "malware_type": "",
+              "ratio": "",
+              "malware_family": ""
+            }
+          ],
+          "cur_ips": [
+            {
+              "ip": "",
+              "carrier": "",
+              "location": {
+                "country": "",
+                "country_code": "",
+                "province": "",
+                "lng": "",
+                "city": "",
+                "lat": ""
+              }
+            },
+            {
+              "ip": "",
+              "carrier": "",
+              "location": {
+                "country": "",
+                "country_code": "",
+                "province": "",
+                "lng": "",
+                "city": "",
+                "lat": ""
+              }
+            }
+          ],
+          "cur_whois": {
+            "registrant_phone": "",
+            "name_server": "",
+            "cdate": "",
+            "registrant_address": "",
+            "registrar_name": "",
+            "registrant_name": "",
+            "alexa": "",
+            "registrant_email": "",
+            "registrant_company": "",
+            "udate": "",
+            "edate": ""
+          },
+          "categories": {
+            "first_cats": [],
+            "second_cats": ""
+          },
+          "cas": [
+            {
+              "subject": "",
+              "issuer": "",
+              "fingerprint": "",
+              "purpose": "",
+              "verify": "",
+              "status": "",
+              "revoked": "",
+              "begin": "",
+              "end": "",
+              "status_desc": "",
+              "serial_number": "",
+              "revoked_time": ""
+            }
+          ]
         }
       }
     },
     {
       "operation": "loss_detection",
-      "title": "Loss Detection",
+      "title": "Get Loss Detection Data",
       "category": "investigation",
       "annotation": "loss_detection",
       "description": "Analyze the IP/domain name of external access scenarios such as office network/production network, and accurately determine whether the IP/domain name is malicious, risk severity level, and credibility level through judgment rules; accurately identify remote control (C2) and malware (Malware) , mining pool threats, provide relevant security incidents or gang labels, etc.",
@@ -359,7 +458,7 @@
           "visible": true
         },
         {
-          "title": "language",
+          "title": "Language",
           "name": "lang",
           "type": "select",
           "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
@@ -379,108 +478,8 @@
         "verbose_msg": "",
         "data": {
           "ips": {
-            "": {
-              "confidence_level": "",
-              "is_malicious": "",
-              "severity": "",
-              "judgments": [
-              ],
-              "tags_classes": [
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                },
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                }
-              ]
-            },
-            "68.183.27.171": {
-              "confidence_level": "",
-              "is_malicious": "",
-              "severity": "",
-              "judgments": [
-              ],
-              "tags_classes": [
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                },
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                }
-              ]
-            }
           },
           "domains": {
-            "": {
-              "confidence": "",
-              "is_malicious": "",
-              "severity": "",
-              "judgments": [
-              ],
-              "categories": {
-                "first_cats": [],
-                "second_cats": ""
-              },
-              "rank": {
-                "alexa_rank": {
-                  "global_rank": ""
-                },
-                "umbrella_rank": {
-                  "global_rank": ""
-                }
-              },
-              "tags_classes": [
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                },
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                }
-              ]
-            },
-            "xv.thotiana.live": {
-              "confidence_level": "",
-              "is_malicious": "",
-              "severity": "",
-              "judgments": [
-              ],
-              "categories": {
-                "first_cats": [],
-                "second_cats": ""
-              },
-              "rank": {
-                "alexa_rank": {
-                  "global_rank": ""
-                },
-                "umbrella_rank": {
-                  "global_rank": ""
-                }
-              },
-              "tags_classes": [
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                },
-                {
-                  "tags_type": "",
-                  "tags": [
-                  ]
-                }
-              ]
-            }
           }
         }
       }
@@ -520,7 +519,7 @@
           "name": "sandbox_type",
           "type": "select",
           "description": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
-          "tooltip": "RSandbox running environment, the user can specify the sandbox running environment of the file.",
+          "tooltip": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -547,120 +546,12 @@
       ],
       "enabled": true,
       "output_schema": {
+        "verbose_msg": "",
         "response_code": "",
         "data": {
-          "summary": {
-            "threat_level": "",
-            "is_whitelist": "",
-            "submit_time": "",
-            "file_name": "",
-            "file_type": "",
-            "sample_sha256": "",
-            "tag": {
-              "s": [],
-              "x": []
-            },
-            "threat_score": "",
-            "sandbox_type": "",
-            "sandbox_type_list": [],
-            "multi_engines": ""
-          },
-          "multiengines": {
-            "result": {
-              "Kaspersky": "",
-              "Microsoft": ""
-            },
-            "scan_time": ""
-          },
-          "static": {
-            "details": {
-              "pe_version_info": [],
-              "pe_sections": [],
-              "pe_signatures": {},
-              "pe_imports": [],
-              "pe_resources": [],
-              "tag": [],
-              "pe_detect": {},
-              "pe_basic": {},
-              "pe_exports": []
-            },
-            "basic": {
-              "sha1": "",
-              "sha256": "",
-              "file_type": "",
-              "file_name": "",
-              "ssdeep": "",
-              "file_size": "",
-              "md5": ""
-            }
-          },
-          "signature": [
-            {
-              "severity": "",
-              "references": [],
-              "sig_class": "",
-              "name": "",
-              "description": "",
-              "markcount": "",
-              "marks": [],
-              "families": [],
-              "attck_id": "",
-              "attck_info": {}
-            }
-          ],
-          "dropped": [
-            {
-              "sha1": "",
-              "urls": [],
-              "sha256": "",
-              "size": "",
-              "filepath": "",
-              "name": "",
-              "crc32": "",
-              "ssdeep": "",
-              "type": "",
-              "yara": [],
-              "md5": ""
-            }
-          ],
-          "pstree": {
-            "children": [
-              {
-                "track": "",
-                "pid": "",
-                "process_name": "",
-                "command_line": "",
-                "first_seen": "",
-                "ppid": "",
-                "children": []
-              }
-            ],
-            "process_name": {
-              "en": "",
-              "cn": ""
-            }
-          },
-          "network": {
-            "fingerprint": [],
-            "tls": [],
-            "udp": [],
-            "dns_servers": [],
-            "http": [],
-            "irc": [],
-            "smtp": [],
-            "tcp": [],
-            "smtp_ex": [],
-            "mitm": [],
-            "hosts": [],
-            "dns": [],
-            "http_ex": [],
-            "domains": [],
-            "dead_hosts": [],
-            "icmp": [],
-            "https_ex": []
-          }
-        },
-        "verbose_msg": ""
+          "sha256": "",
+          "permalink": ""
+        }
       }
     },
     {
@@ -701,7 +592,7 @@
           "name": "sandbox_type",
           "type": "select",
           "description": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
-          "tooltip": "RSandbox running environment, the user can specify the sandbox running environment of the file.",
+          "tooltip": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1062,7 +953,7 @@
           ]
         },
         {
-          "title": "language",
+          "title": "Language",
           "name": "lang",
           "type": "select",
           "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
@@ -1078,54 +969,29 @@
       ],
       "enabled": true,
       "output_schema": {
-        "response_code": "",
         "data": {
-          "multiengines": {
-            "threatbook": "",
-            "Google Safebrowsing": ""
+          "ip": "",
+          "basic": {},
+          "asn": {
+            "rank": "",
+            "info": "",
+            "number": ""
           },
-          "threat_level": "",
-          "sandbox": {
-            "threat_level": "",
-            "submit_time": "",
-            "file_name": "",
-            "file_type": "",
-            "sample_sha256": "",
-            "tag": [],
-            "sb_status": "",
-            "sandbox_type": "",
-            "sandbox_type_list": []
-          },
-          "details": {
-            "headers": {
-              "Accept-Ranges": "",
-              "Strict-Transport-Security": "",
-              "Server": "",
-              "ETag": "",
-              "Connection": "",
-              "Last-Modified": "",
-              "Content-Length": "",
-              "Date": "",
-              "Content-Type": ""
-            },
-            "lastSeen": "",
-            "ip": "",
-            "historyScans": [
-              {
-                "fileName": "",
-                "sha256": "",
-                "multiEngines": "",
-                "fileType": ""
-              }
+          "cur_domains": [],
+          "history_domains": {
+            "2017-02-22": [
             ],
-            "finalUrl": "",
-            "url": "",
-            "sha256s": [
+            "2017-01-29": [
             ],
-            "status": "",
-            "httpStatusCode": ""
+            "2016-12-21": [
+            ],
+            "2016-09-11": [
+            ],
+            "2015-12-17": [
+            ]
           }
         },
+        "response_code": "",
         "verbose_msg": ""
       }
     },
@@ -1161,7 +1027,7 @@
           ]
         },
         {
-          "title": "language",
+          "title": "Language",
           "name": "lang",
           "type": "select",
           "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
@@ -1177,54 +1043,38 @@
       ],
       "enabled": true,
       "output_schema": {
-        "response_code": "",
         "data": {
-          "multiengines": {
-            "threatbook": "",
-            "Google Safebrowsing": ""
-          },
-          "threat_level": "",
-          "sandbox": {
-            "threat_level": "",
-            "submit_time": "",
-            "file_name": "",
-            "file_type": "",
-            "sample_sha256": "",
-            "tag": [],
-            "sb_status": "",
-            "sandbox_type": "",
-            "sandbox_type_list": []
-          },
-          "details": {
-            "headers": {
-              "Accept-Ranges": "",
-              "Strict-Transport-Security": "",
-              "Server": "",
-              "ETag": "",
-              "Connection": "",
-              "Last-Modified": "",
-              "Content-Length": "",
-              "Date": "",
-              "Content-Type": ""
-            },
-            "lastSeen": "",
-            "ip": "",
-            "historyScans": [
-              {
-                "fileName": "",
-                "sha256": "",
-                "multiEngines": "",
-                "fileType": ""
+          "domain": "",
+          "history_whoises": [
+            {
+              "date": "",
+              "whois": {
+                "cdate": "",
+                "edate": "",
+                "udate": "",
+                "alexa": "",
+                "registrar_name": "",
+                "name_server": "",
+                "registrant_name": "",
+                "registrant_email": "",
+                "registrant_company": "",
+                "registrant_address": "",
+                "registrant_phone": ""
               }
-            ],
-            "finalUrl": "",
-            "url": "",
-            "sha256s": [
-            ],
-            "status": "",
-            "httpStatusCode": ""
-          }
+            }
+          ],
+          "history_ips": [
+            {
+              "date": "",
+              "ips": [
+                {
+                  "ip": ""
+                }
+              ]
+            }
+          ]
         },
+        "response_code": "",
         "verbose_msg": ""
       }
     },
@@ -1246,7 +1096,7 @@
           "visible": true
         },
         {
-          "title": "language",
+          "title": "Language",
           "name": "lang",
           "type": "select",
           "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
@@ -1292,7 +1142,7 @@
           "visible": true
         },
         {
-          "title": "language",
+          "title": "Language",
           "name": "lang",
           "type": "select",
           "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
@@ -1307,9 +1157,10 @@
         }
       ],
       "enabled": true,
+      "api_output_schema": "get_domain_name_context_schema",
       "output_schema": {
         "data": {
-          "000o000.00o0000ooo.xyz": {
+          "": {
             "context": [
               {
                 "sample": "",
@@ -1347,6 +1198,7 @@
                   "threat_level": ""
                 },
                 "suggestion": {
+
                 }
               }
             ]

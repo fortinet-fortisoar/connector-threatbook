@@ -13,6 +13,8 @@ from connectors.cyops_utilities.builtins import download_file_from_cyops
 from integrations.crudhub import make_request
 from requests import exceptions as req_exceptions
 
+from .schema import *
+
 logger = get_logger('threatbook')
 
 
@@ -27,7 +29,7 @@ class ThreatBook(object):
     def make_rest_call(self, endpoint, params={}, payload={}, files=None, method='GET'):
         params.update({'apikey': self.api_key}) if not files else payload.update({'apikey': self.api_key})
         service_endpoint = '{0}{1}'.format(self.server_url, endpoint)
-        logger.debug("service_endpoint: {}".format(service_endpoint))
+        logger.debug("service_endpoint: {0}".format(service_endpoint))
         try:
             response = requests.request(method, service_endpoint, data=payload, params=params, files=files,
                                         verify=self.verify_ssl)
@@ -200,8 +202,27 @@ def get_domain_name_context(config, params):
     return tb.make_rest_call('/v3/scene/domain_context', params=query_params)
 
 
+def get_output_schema(params, schema):
+    field = params.get('resource')
+    schema_template = DEFAULT_SCHEMA
+    schema_template.update({"data": {field: schema}})
+    return schema_template
+
+
+def get_ip_analysis_schema(config, params):
+    return get_output_schema(params, IP_QUERY_SCHEMA)
+
+
+def get_domain_analysis_schema(config, params):
+    return get_output_schema(params, DOMAIN_QUERY_SCHEMA)
+
+
+def get_domain_name_context_schema(config, params):
+    return get_output_schema(params, DOMAIN_NAME_CONTEXT_SCHEMA)
+
+
 def _check_health(config):
-    params = {'url': 'www.google.com'}
+    params = {'url': 'threatbook.cn'}
     return get_url_reputations(config, params)
 
 
@@ -218,5 +239,11 @@ operations = {
     'run_ip_advance_query': run_ip_advance_query,
     'run_domain_advance_query': run_domain_advance_query,
     'run_sub_domain_query': run_sub_domain_query,
-    'get_domain_name_context': get_domain_name_context
+    'get_domain_name_context': get_domain_name_context,
+
+    # below actions for handling dynamic output schema
+    'get_ip_analysis_schema': get_ip_analysis_schema,
+    'get_domain_analysis_schema': get_domain_analysis_schema,
+    'get_domain_name_context_schema': get_domain_name_context_schema
 }
+
