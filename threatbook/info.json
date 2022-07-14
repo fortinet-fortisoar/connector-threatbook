@@ -7,7 +7,7 @@
   "cs_compatible": true,
   "version": "1.0.0",
   "category": "Threat Intelligence",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/threatbook/336/threatbook-v1-0-0",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "configuration": {
@@ -16,7 +16,7 @@
         "title": "Server URL",
         "name": "server_url",
         "type": "text",
-        "description": "Server URL of the ThreatBook API server to which you will connect and perform the automated operations. Please refer this doc https://automation.trendmicro.com/xdr/Guides/Regional-Domains",
+        "description": "Specify the ThreatBook server URL for this connector to connect and perform automated operations.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -26,7 +26,7 @@
         "title": "API Key",
         "name": "api_key",
         "type": "password",
-        "description": "API Key to access the of the ThreatBook endpoint to which you will connect and perform the automated operations.",
+        "description": "Specify an API Key for this connector to access the ThreatBook endpoint.",
         "required": true,
         "editable": true,
         "visible": true
@@ -35,7 +35,7 @@
         "title": "Verify SSL",
         "name": "verify_ssl",
         "type": "checkbox",
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "description": "Select the checkbox to verify the server's SSL certificate. By default, this option is set as True.",
         "required": false,
         "editable": true,
         "visible": true,
@@ -49,14 +49,14 @@
       "title": "Submit IP for Analysis",
       "category": "investigation",
       "annotation": "submit_ip",
-      "description": "Analyze business logs and external IPs obtained from security devices such as firewalls and WAFs. Obtain IP-related geographic location, ASN information, and comprehensively determine threat types such as: Remote Control (C2), Zombie, Compromised, Scanner, Phishing, etc., related attack gangs or security incidents Tags, raw intelligence, relevant sample information, etc.",
+      "description": "Retrives information about an IP address' geographical location, ASN information, related attack groups, security incidents tags, raw intelligence, and other relevant information. Specify an IP address to obtain business logs and external IP addresses from security devices such as firewalls and Web Application Firewalls (WAF). It helps comprehensively determine threat types such as Remote Control (C2), Zombie, Compromised, Scanner, and Phishing.",
       "parameters": [
         {
           "title": "IP Address",
           "name": "resource",
           "type": "text",
-          "description": "Provide the IP address to analyze.",
-          "tooltip": "Provide the IP address to analyze.",
+          "description": "Specify the IP address to be submitted to ThreatBook for analysis.",
+          "tooltip": "Specify the IP address to be submitted to ThreatBook for analysis.",
           "required": true,
           "editable": true,
           "visible": true
@@ -65,8 +65,8 @@
           "title": "Exclude",
           "name": "exclude",
           "type": "multiselect",
-          "description": "Provide CSV list of parameters can be excluded according to the actual usage scenario, and the result information will be returned.",
-          "tooltip": "Provide CSV list of parameters can be excluded according to the actual usage scenario, and the result information will be returned.",
+          "description": "Exclude any of the following parameters according to the actual usage scenario, and the result information is returned. Multiple parameters should be separated by commas and must not contain spaces. asn: asn information. ports: Port information. cas: SSL certificate and other information. rdns_list: rdns record information. intelligences: threat intelligence. judgments: The types of threats that are analyzed and comprehensively determined from threat intelligence. tags_classes: related attack groups or security event information tags, etc. samples: relevant samples. update_time: The last update time of the intelligence. sum_cur_domains: The number of domains currently pointing to. scene: application scene.",
+          "tooltip": "Exclude any of the following parameters according to the actual usage scenario, and the result information is returned. Multiple parameters should be separated by commas and must not contain spaces. asn: asn information. ports: Port information. cas: SSL certificate and other information. rdns_list: rdns record information. intelligences: threat intelligence. judgments: The types of threats that are analyzed and comprehensively determined from threat intelligence. tags_classes: related attack groups or security event information tags, etc. samples: relevant samples. update_time: The last update time of the intelligence. sum_cur_domains: The number of domains currently pointing to. scene: application scene.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -88,8 +88,8 @@
           "title": "Language",
           "name": "lang",
           "type": "select",
-          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
-          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "description": "Select the language in which the result appears. When this parameter is not specified, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
+          "tooltip": "Select the language in which the result appears. When this parameter is not specified, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
           "required": false,
           "editable": true,
           "visible": true,
@@ -164,14 +164,14 @@
       "title": "Get IP Reputation",
       "category": "investigation",
       "annotation": "get_ip_reputation",
-      "description": "Analyze the IP of the inbound scenario, provide the geographical location and ASN information of the IP, and accurately determine whether the IP is malicious, the risk severity level, and the credibility level through the judgment rules; identify the threat.",
+      "description": "Retrives information about an IP address' geographical location, ASN information, its risk severity level, and its credibility level through judgement rules. Specify an IP address to accurately determine if it is malicious and get its reputation.",
       "parameters": [
         {
           "title": "IP Address",
           "name": "resource",
           "type": "text",
-          "description": "Provide CSV list of the IP addresses to reputation. Support batch query, up to 100, separated by commas.",
-          "tooltip": "Provide CSV list of the IP addresses to reputation. Support batch query, up to 100, separated by commas.",
+          "description": "Specify a comma-separated list of the IP addresses to get the reputation. It supports a batch query for up to 100 values separated by commas.",
+          "tooltip": "Specify a comma-separated list of the IP addresses to get the reputation. It supports a batch query for up to 100 values separated by commas.",
           "required": true,
           "editable": true,
           "visible": true
@@ -180,8 +180,8 @@
           "title": "Language",
           "name": "lang",
           "type": "select",
-          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
-          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "description": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
+          "tooltip": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
           "required": false,
           "editable": true,
           "visible": true,
@@ -229,13 +229,13 @@
       "title": "Submit Domain for Analysis",
       "category": "investigation",
       "annotation": "domain_analysis",
-      "description": "Analysis can be performed on domain names pulled from internal DNS or some NGFWs. Obtain the IP address corresponding to the domain name, the current Whois, and comprehensively determine the threat.",
+      "description": "Retrives a domain name's IP address and its current WhoIs information to comprehensively determine the threat. Specify a domain name to pull relevant information from an internal DNS or Next-Generation Firewalls.",
       "parameters": [
         {
           "title": "Domain Name",
           "name": "resource",
           "type": "text",
-          "description": "Provide a domain name to analysis",
+          "description": "Specify a domain name to analyze",
           "tooltip": "Provide a domain name to analysis",
           "required": true,
           "editable": true,
@@ -245,8 +245,8 @@
           "title": "Exclude",
           "name": "exclude",
           "type": "multiselect",
-          "description": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces). cur_ips: The resolution IP address information of the domain name. \ncur_whois: The current whois information of the domain name. \ncas: SSL certificate and other information. intelligences: threat intelligence. \njudgments: The types of threats that are analyzed and comprehensively determined from threat intelligence. tags_classes: related attack groups or security event information tags, etc. \nsamples: relevant samples.\ncategories: Domain name categories.",
-          "tooltip": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces). cur_ips: The resolution IP address information of the domain name. \ncur_whois: The current whois information of the domain name. \ncas: SSL certificate and other information. intelligences: threat intelligence. \njudgments: The types of threats that are analyzed and comprehensively determined from threat intelligence. tags_classes: related attack groups or security event information tags, etc. \nsamples: relevant samples.\ncategories: Domain name categories.",
+          "description": "Exclude any of the following parameters according to the actual usage scenario, and the result information is returned. Multiple parameters should be separated by commas and must not contain spaces. cur_ips: The resolution IP address information of the domain name cur_whois: The current whois information of the domain name cas: SSL certificate and other information intelligences: threat intelligence judgments: The types of threats that are analyzed and comprehensively determined from threat intelligence tags_classes: related attack groups or security event information tags, etc. samples: relevant samples categories: Domain name categories",
+          "tooltip": "Exclude any of the following parameters according to the actual usage scenario, and the result information is returned. Multiple parameters should be separated by commas and must not contain spaces. cur_ips: The resolution IP address information of the domain name cur_whois: The current whois information of the domain name cas: SSL certificate and other information intelligences: threat intelligence judgments: The types of threats that are analyzed and comprehensively determined from threat intelligence tags_classes: related attack groups or security event information tags, etc. samples: relevant samples categories: Domain name categories",
           "required": false,
           "editable": true,
           "visible": true,
@@ -265,8 +265,8 @@
           "title": "Language",
           "name": "lang",
           "type": "select",
-          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
-          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "description": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
+          "tooltip": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -280,8 +280,7 @@
       "api_output_schema": "get_domain_analysis_schema",
       "output_schema": {
         "": {
-          "judgments": [
-          ],
+          "judgments": [],
           "rank": {
             "alexa_rank": {
               "global_rank": ""
@@ -297,13 +296,11 @@
                 "expired": "",
                 "confidence": "",
                 "source": "",
-                "intel_types": [
-                ],
+                "intel_types": [],
                 "intel_tags": [
                   {
                     "tags_type": "",
-                    "tags": [
-                    ]
+                    "tags": []
                   },
                   {
                     "tags_type": "",
@@ -318,18 +315,15 @@
                 "expired": "",
                 "confidence": "",
                 "source": "",
-                "intel_types": [
-                ],
+                "intel_types": [],
                 "intel_tags": [
                   {
                     "tags_type": "",
-                    "tags": [
-                    ]
+                    "tags": []
                   },
                   {
                     "tags_type": "",
-                    "tags": [
-                    ]
+                    "tags": []
                   }
                 ]
               }
@@ -340,18 +334,15 @@
                 "expired": "",
                 "confidence": "",
                 "source": "",
-                "intel_types": [
-                ],
+                "intel_types": [],
                 "intel_tags": [
                   {
                     "tags_type": "",
-                    "tags": [
-                    ]
+                    "tags": []
                   },
                   {
                     "tags_type": "",
-                    "tags": [
-                    ]
+                    "tags": []
                   }
                 ]
               }
@@ -360,13 +351,11 @@
           "tags_classes": [
             {
               "tags_type": "",
-              "tags": [
-              ]
+              "tags": []
             },
             {
               "tags_type": "",
-              "tags": [
-              ]
+              "tags": []
             }
           ],
           "samples": [
@@ -445,14 +434,14 @@
       "title": "Get Loss Detection Data",
       "category": "investigation",
       "annotation": "loss_detection",
-      "description": "Analyze the IP/domain name of external access scenarios such as office network/production network, and accurately determine whether the IP/domain name is malicious, risk severity level, and credibility level through judgment rules; accurately identify remote control (C2) and malware (Malware) , mining pool threats, provide relevant security incidents or gang labels, etc.",
+      "description": "Retrieves information from external access scenarios such as office network or production network about an IP address or a domain name's risk severity level and its credibility level through judgment rules. Specify an IP address or a domain name to accurately determine if the IP or the domain name is malicious, identify their threat types such as remote control (C2), malware (Malware), and mining pool threats, and to get relevant security incidents or group labels.",
       "parameters": [
         {
           "title": "Resource",
           "name": "resource",
           "type": "text",
-          "description": "IP addresses or domain names, support batch query, up to 100, separated by commas.\nIP can be queried with ports to obtain high-confidence judgment results.\nExample of IP with port format in the request: 8.8.8.8:143,0.0.0.0:80",
-          "tooltip": "IP addresses or domain names, support batch query, up to 100, separated by commas.\nIP can be queried with ports to obtain high-confidence judgment results.\nExample of IP with port format in the request: 8.8.8.8:143,0.0.0.0:80",
+          "description": "Specify IP addresses or domain names, support batch query, up to 100, separated by commas. IP adress can be queried with ports to obtain high-confidence judgment results. Following is an example of IP addresses, with port format, in the request: 8.8.8.8:143,0.0.0.0:80",
+          "tooltip": "Specify IP addresses or domain names, support batch query, up to 100, separated by commas. IP adress can be queried with ports to obtain high-confidence judgment results. Following is an example of IP addresses, with port format, in the request: 8.8.8.8:143,0.0.0.0:80",
           "required": true,
           "editable": true,
           "visible": true
@@ -461,8 +450,8 @@
           "title": "Language",
           "name": "lang",
           "type": "select",
-          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
-          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "description": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English.",
+          "tooltip": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -477,10 +466,8 @@
         "response_code": "",
         "verbose_msg": "",
         "data": {
-          "ips": {
-          },
-          "domains": {
-          }
+          "ips": {},
+          "domains": {}
         }
       }
     },
@@ -489,7 +476,7 @@
       "title": "Submit File",
       "category": "investigation",
       "annotation": "submit_file",
-      "description": "For suspected malicious files such as office terminals, Web/FTP/mail attachments, and suspicious files on terminals/servers, 22 anti-virus scanning engines are used to quickly detect them, and according to different file types, the system automatically selects a runnable sandbox environment for dynamic detection.",
+      "description": "Detects malicious files such as in office terminals, Web, FTP, email attachments, and suspicious files on terminals/servers using 22 anti-virus scanning engines. Specify a file IRI or an attachment ID and according to different file types, the system automatically selects an appropriate sandbox environment for dynamic detection.",
       "parameters": [
         {
           "name": "input",
@@ -502,7 +489,7 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "Type of file that you want to submit to VirusTotal for analysis. Type can be an Attachment ID or a File IRI.",
+          "description": "Specify the type of file to submit to ThreatBook for analysis. Type can be an Attachment ID or a File IRI.",
           "value": "File IRI"
         },
         {
@@ -512,14 +499,14 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "Reference ID that is used to access the attachment metadata from the FortiSOAR™ Attachments module.\nIn the playbook, this defaults to the{{vars.attachment_id}} value or the {{vars.file_iri}} value."
+          "description": "Specify a Reference ID to access the attachment metadata from the FortiSOAR Attachments module. In the playbook, this defaults to the {{vars.attachment_id}}value or the {{vars.file_iri}}value."
         },
         {
           "title": "Sandbox Type",
           "name": "sandbox_type",
           "type": "select",
-          "description": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
-          "tooltip": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
+          "description": "Specify a sandbox running environment for the submitted file.",
+          "tooltip": "Specify a sandbox running environment for the submitted file.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -537,8 +524,8 @@
           "title": "Run Time",
           "name": "run_time",
           "type": "integer",
-          "description": "Sandbox running time, default 60s, controlled within 300s according to demand",
-          "tooltip": "Sandbox running time, default 60s, controlled within 300s according to demand",
+          "description": "Specify a sandbox running time controlled within 300s according to demand. By default the value is 60s",
+          "tooltip": "Specify a sandbox running time controlled within 300s according to demand. By default the value is 60s",
           "required": false,
           "editable": true,
           "visible": true
@@ -559,14 +546,14 @@
       "title": "Get File Reputation",
       "category": "investigation",
       "annotation": "get_file_reputation",
-      "description": "Obtain detailed static analysis & dynamic analysis reports of files, including file summary information, network behavior, behavior signature, static information, release behavior, process behavior, and anti-virus scan engine detection results.",
+      "description": "Retrieves detailed static and dynamic analysis reports of files, including file summary information, network behavior, behavior signature, static information, release behavior, process behavior, and anti-virus scan engine detection results. Specify a file hash to get a file's reputation and other relevant information.",
       "parameters": [
         {
           "title": "Hash Type",
           "name": "hash_type",
           "type": "select",
-          "description": "Select type of file hash, used to get the analysis report.",
-          "tooltip": "Select type of file hash, used to get the analysis report. ",
+          "description": "Select type of file hash to get the analysis report.",
+          "tooltip": "Select type of file hash to get the analysis report.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -581,8 +568,8 @@
           "title": "Hash Value",
           "name": "hash_value",
           "type": "text",
-          "description": "Provide the hash value of the selected hash type of the file, used to get the analysis report.",
-          "tooltip": "Provide the hash value of the selected hash type of the file, used to get the analysis report.",
+          "description": "Specify a hash value of the selected hash type of the file, to get the analysis report.",
+          "tooltip": "Specify a hash value of the selected hash type of the file, to get the analysis report.",
           "required": true,
           "editable": true,
           "visible": true
@@ -591,8 +578,8 @@
           "title": "Sandbox Type",
           "name": "sandbox_type",
           "type": "select",
-          "description": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
-          "tooltip": "Sandbox running environment, the user can specify the sandbox running environment of the file.",
+          "description": "Specify a sandbox running environment to open the submitted file.",
+          "tooltip": "Specify a sandbox running environment to open the submitted file.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -610,8 +597,8 @@
           "title": "Query Fields",
           "name": "query_fields",
           "type": "select",
-          "description": "File analysis report, all are obtained by default, optional data include:",
-          "tooltip": "File analysis report, all are obtained by default, optional data include:",
+          "description": "File analysis report contains all the fields, by default. Optionally, select one of the following fields for file analysis report to contain only that field: Summary Network Signature Static Dropped PSTree Multiengines",
+          "tooltip": "File analysis report contains all the fields, by default. Optionally, select one of the following fields for file analysis report to contain only that field: Summary Network Signature Static Dropped PSTree Multiengines",
           "required": false,
           "editable": true,
           "visible": true,
@@ -749,14 +736,14 @@
       "title": "Get File Detection Report",
       "category": "investigation",
       "annotation": "file_detection_report",
-      "description": "Get the results of files that have been detected by 22 anti-virus scanning engines.",
+      "description": "Retrieves a file detection report from the results of files that have been detected by the many anti-virus scanning engines in ThreatBook. Specify a file hash value to get the analysis report.",
       "parameters": [
         {
           "title": "Hash Type",
           "name": "hash_type",
           "type": "select",
           "description": "Select type of file hash, used to get the analysis report.",
-          "tooltip": "Select type of file hash, used to get the analysis report. ",
+          "tooltip": "Select type of file hash, used to get the analysis report.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -771,8 +758,8 @@
           "title": "Hash Value",
           "name": "hash_value",
           "type": "text",
-          "description": "Provide the hash value of the selected hash type of the file, used to get the analysis report.",
-          "tooltip": "Provide the hash value of the selected hash type of the file, used to get the analysis report.",
+          "description": "Specify a hash value of the selected hash type of the file, to get the analysis report.",
+          "tooltip": "Specify a hash value of the selected hash type of the file, to get the analysis report.",
           "required": true,
           "editable": true,
           "visible": true
@@ -825,14 +812,14 @@
       "title": "Submit URL for Scanning",
       "category": "investigation",
       "annotation": "scan_url",
-      "description": "Detect any URL through 11 URL scanning engines and URL/domain name blacklist services, analyze the files downloaded by the URL, and generate a URL scanning analysis report.",
+      "description": "Retrieves a URL scanning analysis report by submitting a URL for scanning to the 11 URL scanning engines and URL/domain name blacklist services. Specify a URL to analyze the files downloaded by the URL and generate a URL scanning analysis report.",
       "parameters": [
         {
           "title": "URL",
           "name": "url",
           "type": "text",
-          "description": "Provide the URL for analysis.",
-          "tooltip": "Provide the URL for analysis.",
+          "description": "Specify a URL for analysis.",
+          "tooltip": "Specify a URL for analysis.",
           "required": true,
           "editable": true,
           "visible": true
@@ -854,14 +841,14 @@
       "title": "Get URL Reputations",
       "category": "investigation",
       "annotation": "get_url_reputations",
-      "description": "Get URL scan engine detection results, and analysis results of downloaded files.",
+      "description": "Retrieves a URL's reputation from the analysis results of downloaded files. Specify a URL to get URL scan engine detection results.",
       "parameters": [
         {
           "title": "URL",
           "name": "url",
           "type": "text",
-          "description": "Provide scanned URL get url scan engine detection result.",
-          "tooltip": "Provide scanned URL get url scan engine detection result.",
+          "description": "Specify a URL to get URL scan engine's detection result.",
+          "tooltip": "Specify a URL to get URL scan engine's detection result.",
           "required": true,
           "editable": true,
           "visible": true
@@ -911,8 +898,7 @@
             ],
             "finalUrl": "",
             "url": "",
-            "sha256s": [
-            ],
+            "sha256s": [],
             "status": "",
             "httpStatusCode": ""
           }
@@ -925,14 +911,14 @@
       "title": "Run IP Advance Query",
       "category": "investigation",
       "annotation": "run_ip_advance_query",
-      "description": "IP advanced query, obtain IP current domain name, historical domain name information.",
+      "description": "Retrieves an IP address' current domain name and historical domain name information. Specify an IP address, and optionally, select exclusion parameters to filter the returned results and analyze only the relevant information.",
       "parameters": [
         {
           "title": "IP Address",
           "name": "resource",
           "type": "text",
-          "description": "Provide IP address to obtain domain related information",
-          "tooltip": "Provide IP address to obtain domain related information",
+          "description": "Specify an IP address to obtain domain related information",
+          "tooltip": "Specify an IP address to obtain domain related information",
           "required": true,
           "editable": true,
           "visible": true
@@ -941,8 +927,8 @@
           "title": "Exclude",
           "name": "exclude",
           "type": "multiselect",
-          "description": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces).",
-          "tooltip": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces).",
+          "description": "Exclude any of the following parameters according to the actual usage scenario, and the result information is returned. Multiple parameters should be separated by commas and must not contain spaces. asn: asn information. cur_domains: The domain names currently pointing to this IP. history_domains: IP reverse history domain names.",
+          "tooltip": "Exclude any of the following parameters according to the actual usage scenario, and the result information is returned. Multiple parameters should be separated by commas and must not contain spaces. asn: asn information. cur_domains: The domain names currently pointing to this IP. history_domains: IP reverse history domain names.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -956,8 +942,8 @@
           "title": "Language",
           "name": "lang",
           "type": "select",
-          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
-          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "description": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
+          "tooltip": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -979,16 +965,11 @@
           },
           "cur_domains": [],
           "history_domains": {
-            "2017-02-22": [
-            ],
-            "2017-01-29": [
-            ],
-            "2016-12-21": [
-            ],
-            "2016-09-11": [
-            ],
-            "2015-12-17": [
-            ]
+            "2017-02-22": [],
+            "2017-01-29": [],
+            "2016-12-21": [],
+            "2016-09-11": [],
+            "2015-12-17": []
           }
         },
         "response_code": "",
@@ -997,17 +978,17 @@
     },
     {
       "operation": "run_domain_advance_query",
-      "title": "Run Domain Advance Query",
+      "title": "Run Domain Advanced Query",
       "category": "investigation",
       "annotation": "run_domain_advance_query",
-      "description": "Advanced domain name query, obtain the historical Whois information of the domain name, and the historical resolution IP information of the domain name.",
+      "description": "Retrieves a domain name's historical Whois information and its historical IP address resolution information. Specify a domain name, and optionally, select exclusion parameters to run an advanced domain name query, filter the returned results, and analyze only the relevant information.",
       "parameters": [
         {
           "title": "Domain Name",
           "name": "resource",
           "type": "text",
-          "description": "Provide domain name to obtain domain related information",
-          "tooltip": "Provide domain name to obtain domain related information",
+          "description": "Specify a domain name to obtain domain related information",
+          "tooltip": "Specify a domain name to obtain domain related information",
           "required": true,
           "editable": true,
           "visible": true
@@ -1016,8 +997,8 @@
           "title": "Exclude",
           "name": "exclude",
           "type": "select",
-          "description": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces).",
-          "tooltip": "The following parameters can be excluded according to the actual usage scenario, and the result information will be returned. Multiple parameters should be separated by commas (be careful not to have spaces).",
+          "description": "Exclude any of the following parameters according to the actual usage scenario, and the result information is returned. Multiple parameters should be separated by commas and must not contain spaces. history_ips: Domain name historical resolution IP information. history_whoises: domain name history whois information.",
+          "tooltip": "Exclude any of the following parameters according to the actual usage scenario, and the result information is returned. Multiple parameters should be separated by commas and must not contain spaces. history_ips: Domain name historical resolution IP information. history_whoises: domain name history whois information.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1030,8 +1011,8 @@
           "title": "Language",
           "name": "lang",
           "type": "select",
-          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
-          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "description": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
+          "tooltip": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1083,14 +1064,14 @@
       "title": "Run Sub Domain Query",
       "category": "investigation",
       "annotation": "run_sub_domain_query",
-      "description": "Advanced domain name query to obtain domain name subdomain information",
+      "description": "Retrieves a domain name's subdomain information. Specify a domain name to run an advanced domain name query.",
       "parameters": [
         {
           "title": "Domain Name",
           "name": "resource",
           "type": "text",
-          "description": "Provide domain name to obtain sub domain information",
-          "tooltip": "Provide domain name to obtain sub domain information",
+          "description": "Specify a domain name to obtain sub domain information",
+          "tooltip": "Specify a domain name to obtain sub domain information",
           "required": true,
           "editable": true,
           "visible": true
@@ -1099,8 +1080,8 @@
           "title": "Language",
           "name": "lang",
           "type": "select",
-          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
-          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "description": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
+          "tooltip": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1116,8 +1097,7 @@
           "domain": "",
           "sub_domains": {
             "total": "",
-            "data": [
-            ]
+            "data": []
           }
         },
         "response_code": "",
@@ -1129,14 +1109,14 @@
       "title": "Get Domain Name Context",
       "category": "investigation",
       "annotation": "get_domain_name_context",
-      "description": "For malicious domain names that have been hit in the breach detection, the context information is queried to obtain evidence collection and disposal advice.",
+      "description": "Retrieves evidence and disposal advice regarding malicious domain names. Specify a domain name to query the context information about domains that have been identified in a breach.",
       "parameters": [
         {
           "title": "Domain Name",
           "name": "resource",
           "type": "text",
-          "description": "Provide domain name to obtain the context information",
-          "tooltip": "Provide domain name to obtain the context information",
+          "description": "Specify a domain name to obtain the context information",
+          "tooltip": "Specify a domain name to obtain the context information",
           "required": true,
           "editable": true,
           "visible": true
@@ -1145,8 +1125,8 @@
           "title": "Language",
           "name": "lang",
           "type": "select",
-          "description": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
-          "tooltip": "Returns the result language. When this parameter is not entered, English is returned by default. Choose one of the two values: zh：All returned results are displayed in Chinese, en: All returned results are displayed in English.",
+          "description": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
+          "tooltip": "Select the language in which the result appears. When this parameter is not entered, the results are returned in English, by default. The available options are: zh: All returned results are displayed in Chinese en: All returned results are displayed in English",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1181,10 +1161,8 @@
                 "sample": {
                   "sha256": "",
                   "tag": {
-                    "s": [
-                    ],
-                    "x": [
-                    ]
+                    "s": [],
+                    "x": []
                   },
                   "domains": [
                     {
@@ -1197,9 +1175,7 @@
                   "malware_type": "",
                   "threat_level": ""
                 },
-                "suggestion": {
-
-                }
+                "suggestion": {}
               }
             ]
           }
