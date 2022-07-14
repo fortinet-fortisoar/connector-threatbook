@@ -903,7 +903,7 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Run Domain Advance Query",
+          "name": "Run Domain Advanced Query",
           "aliasName": null,
           "tag": "#ThreatBook",
           "description": "Advanced domain name query, obtain the historical Whois information of the domain name, and the historical resolution IP information of the domain name.",
@@ -920,7 +920,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Run Domain Advance Query",
+              "name": "Run Domain Advanced Query",
               "description": null,
               "arguments": {
                 "name": "ThreatBook",
@@ -933,7 +933,7 @@
                 "version": "1.0.0",
                 "connector": "threatbook",
                 "operation": "run_domain_advance_query",
-                "operationTitle": "Run Domain Advance Query",
+                "operationTitle": "Run Domain Advanced Query",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -950,7 +950,7 @@
               "description": null,
               "arguments": {
                 "route": "085a1815-9f62-413a-9dfc-d77770c8a274",
-                "title": "ThreatBook: Run Domain Advance Query",
+                "title": "ThreatBook: Run Domain Advanced Query",
                 "resources": [
                   "alerts"
                 ],
@@ -974,7 +974,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start-> Run Domain Advance Query",
+              "name": "Start-> Run Domain Advanced Query",
               "targetStep": "/api/3/workflow_steps/0ef0832b-5b90-4a63-84d2-a0b3edb9f2f9",
               "sourceStep": "/api/3/workflow_steps/3f588f38-f3c8-4681-ba67-6da9cbe1eff4",
               "label": null,
